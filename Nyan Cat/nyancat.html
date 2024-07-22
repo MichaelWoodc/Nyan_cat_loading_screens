@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation with Nyancat</title>
+    <style>
+        /* Styles for the loading animation */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensure it's above other content */
+        }
+
+        .loading-gif {
+            width: 300px; /* Adjust size as needed */
+            height: auto;
+            animation: moveAcrossScreen 5s linear forwards; /* Adjust duration and timing function as needed */
+        }
+
+        @keyframes moveAcrossScreen {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(150%);
+            }
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: fadeInOut 5s linear forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        /* Hide content while loading */
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <!-- Your loading animation GIF here -->
+        <img src="nyancat.gif" alt="Loading" class="loading-gif">
+        <div class="loading-text">Loading...</div>
+    </div>
+    <div id="content">
+        <!-- Your website content here -->
+        <h1>Welcome to My Website</h1>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hide content while loading
+            document.getElementById("content").style.display = "none";
+        });
+    </script>
+</body>
+</html>
